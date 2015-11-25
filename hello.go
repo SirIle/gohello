@@ -17,6 +17,7 @@ type Message struct {
 func main() {
 	ws := new(restful.WebService)
 	ws.Route(ws.GET("/").To(hello))
+	ws.Route(ws.HEAD("/").To(header))
 	restful.Add(ws)
 	http.ListenAndServe(":80", nil)
 }
@@ -27,4 +28,8 @@ func hello(req *restful.Request, resp *restful.Response) {
 		msg := Message{name, time.Now(), "go"}
 		resp.WriteAsJson(msg)
 	}
+}
+
+func header(req *restful.Request, resp *restful.Response) {
+	resp.WriteHeader(200)
 }
