@@ -8,6 +8,7 @@ import (
 	"github.com/emicklei/go-restful"
 )
 
+// Message defines the structure of the returned JSON
 type Message struct {
 	Hostname string
 	Time     time.Time
